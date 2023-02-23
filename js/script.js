@@ -1,38 +1,46 @@
-const kmPrice = "0.21";
+let kmPrice = "0.21";
 
-let kmNumber = prompt("Inserisci la lunghezza del tuo viaggio in chilometri");
+let kmNumber = parseInt(prompt("Inserisci la lunghezza del tuo viaggio in chilometri"));
 
-let userAge = prompt("Quanti anni hai?");
+let userAge = parseInt(prompt("Quanti anni hai?"));
 
 let kmTotal = kmPrice * kmNumber;
 
-if( parseInt(userAge) < 18){
+let kmDiscount;
 
-   let kmTwentyDiscount = (kmTotal * 20) / 100;
 
-   console.log(
-    `I tuoi chilometri sono: ${kmNumber}
-    Il prezzo del biglietto è: ${kmTotal} euro
+if(userAge < 18){
+
+   kmDiscount = kmTotal - (kmTotal * 20 / 100);
+
+   kmDiscount = kmDiscount.toFixed(2)
+
+   document.writeln(
+    `I tuoi chilometri sono: ${kmNumber}. <br>
+    Il prezzo del biglietto è: ${kmTotal} euro. <br>
     Dato che hai meno di 18 anni hai diritto ad uno sconto
-    del 20%.
-    Totale biglietto: ${kmTwentyDiscount} euro`
+    del 20%. <br>
+    Totale biglietto: ${kmDiscount} euro.`
    )
 
-} else if(parseInt(userAge) >= 65) {
+} else if(userAge >= 65) {
 
-    let kmFourtyDiscount = (kmTotal * 40) / 100;
 
-    console.log(
-        `I tuoi chilometri sono: ${kmNumber}
-        Il prezzo del biglietto è: ${kmTotal} euro
+    kmDiscount = kmTotal - (kmTotal * 40 / 100);
+
+    kmDiscount = kmDiscount.toFixed(2)
+
+    document.writeln(
+        `I tuoi chilometri sono: ${kmNumber}. <br>
+        Il prezzo del biglietto è: ${kmTotal} euro. <br>
         Dato che hai 65 o più anni hai diritto ad uno sconto
-        del 40%.
-        Totale biglietto: ${kmFourtyDiscount} euro`
+        del 40%. <br>
+        Totale biglietto: ${kmDiscount} euro.`
     )
 } else {
 
-    console.log(
-        `I tuoi chilometri sono: ${kmNumber}
-        Il prezzo del biglietto è: ${kmTotal} euro`
+    document.writeln(
+        `I tuoi chilometri sono: ${kmNumber}. <br>
+        Il prezzo del biglietto è: ${kmTotal} euro.`
     )
 }
